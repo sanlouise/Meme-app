@@ -15,7 +15,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    @IBOutlet weak var memeToolbar: UIToolbar!
 
+    // Create memeTextAttributes dictionairy.
     let memeTextAttributes = [
         
         NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -25,27 +28,40 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     ]
     
+    //Initialize meme object.
+    struct Meme {
+        var topTextField: String!
+        var bottomTextField: String!
+        var originalImage: UIImage!
+        
+        // Original image and textfields.
+        var memedImage: UIImage!
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Delegates from UITextField
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
 //        self.topTextField.textAlignment = .Center
 //        self.bottomTextField.textAlignment = .Center
+        
+        // Set the text custom attributes to override the defaults.
         self.topTextField.defaultTextAttributes = memeTextAttributes
         self.bottomTextField.defaultTextAttributes = memeTextAttributes
         
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        // The app signs up to be notified when the keyboard is showing.
         self.subscribeToKeyboardNotifications()
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+        // If the device has a camera, enable the camera button.
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
     // Unsubscribe
@@ -78,17 +94,21 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // Shift the view in response to the UIKeyboardWillShowNotification:
-    func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y = 0.0
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+    func keyboardWillShow(notification: NSNotification)
+    {
+        if self.view.frame.origin.y != 0 { return }
+        if bottomTextField.isFirstResponder()
+        {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
-    // Shift the view in response to the UIKeyboardWillShowNotification:
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        if self.bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
-    
+
     // NSNotification objects encapsulate information so that it can be broadcast to other objects by an NSNotificationCenter object.
     // The app signs up to be notified when the keyboard is showing.
     func subscribeToKeyboardNotifications() {
@@ -108,27 +128,34 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return keyboardSize.CGRectValue().height
     }
     
-//    // Create a UIImage that combines the Image View and the Textfields
-//    func generateMemedImage() -> UIImage {
+    // Create a UIImage that combines the Image View and the Textfields
+    func generateMemedImage() -> UIImage {
 //        // Hide toolbar and navigation
 //        self.memeToolbar.hidden = true
-//        // render view to an image
-//        UIGraphicsBeginImageContext(self.view.frame.size)
-//        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
-//        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        return memedImage
-//    }
-//    
-//    func save() {
-//        //Create the meme
-//        var meme = Meme( text: textField.text!, image:
-//            self.imageView.image, memedImage: memedImage())
-//        
-//        // Add it to the memes array in the Application Delegate
-//        (UIApplication.sharedApplication().delegate as!
-//            AppDelegate).memes.append(meme)
-//    }
+        // render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+    }
+    
+    func save() {
+        //Create the meme
+        var meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage:
+            self.imagePickerView.image, memedImage: generateMemedImage())
+    }
+    
+    // Make keyboard disappear when user clicks outside of text field.
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // Make keyboard dissapear when user clicks on return button.
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        bottomTextField.resignFirstResponder()
+        return true
+    }
 }
 
