@@ -17,7 +17,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var memeToolbar: UIToolbar!
-    @IBOutlet weak var navigationBar: UINavigationItem!
 
     // Create memeTextAttributes dictionairy.
     let memeTextAttributes = [
@@ -53,8 +52,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // Set the text custom attributes to override the defaults.
         self.topTextField.defaultTextAttributes = memeTextAttributes
         self.bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-        
+
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -141,7 +139,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Create a UIImage that combines the Image View and the Textfields
     func generateMemedImage() -> UIImage {
-        self.memeToolbar.hidden = true
+        hideNavigationItems(true)
         // render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
@@ -161,6 +159,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         var meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
+    }
+    
+    private func hideNavigationItems(hide: Bool){
+        memeToolbar.hidden = hide
+        navigationController?.setNavigationBarHidden(hide, animated: false)
+
     }
     
 }
