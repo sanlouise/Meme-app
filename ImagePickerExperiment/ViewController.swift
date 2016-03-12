@@ -86,9 +86,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-//    @IBAction func share(sender: UIBarButtonItem) {
-//        shareWhenTapped(generateMemedImage())
-//    }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Set the chosen image.
@@ -157,8 +154,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func save() {
         //Create the meme
         var meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
+        
     }
     
     private func hideNavigationItems(hide: Bool){
