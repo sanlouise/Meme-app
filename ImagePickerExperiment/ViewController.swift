@@ -15,25 +15,26 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var memeToolbar: UIToolbar!
+    @IBOutlet weak var navigationBar: UINavigationItem!
 
     // Create memeTextAttributes dictionairy.
     let memeTextAttributes = [
-        
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName : -5
-        
     ]
+    
+    var memes: [Meme]!
+    var memedImage: UIImage!
     
     //Initialize meme object.
     struct Meme {
         var topTextField: String!
         var bottomTextField: String!
         var originalImage: UIImage!
-        
         // Original image and textfields.
         var memedImage: UIImage!
         
@@ -45,8 +46,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // Delegates from UITextField
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
-//        self.topTextField.textAlignment = .Center
-//        self.bottomTextField.textAlignment = .Center
+        // center text
+        topTextField.textAlignment = NSTextAlignment.Center
+        bottomTextField.textAlignment = NSTextAlignment.Center
         
         // Set the text custom attributes to override the defaults.
         self.topTextField.defaultTextAttributes = memeTextAttributes
@@ -62,6 +64,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         // If the device has a camera, enable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     }
     
     // Unsubscribe
@@ -84,6 +87,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
+//    @IBAction func share(sender: UIBarButtonItem) {
+//        shareWhenTapped(generateMemedImage())
+//    }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Set the chosen image.
@@ -93,20 +100,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             // Cancel choosing an image.
             self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func keyboardWillShow(notification: NSNotification)
-    {
-        if self.view.frame.origin.y != 0 { return }
-        if bottomTextField.isFirstResponder()
-        {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
-        }
+
+    func keyboardWillShow(notification: NSNotification){
+        view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if self.bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
-        }
+    func keyboardWillHide(notification: NSNotification){
+        view.frame.origin.y += getKeyboardHeight(notification)
     }
 
     // NSNotification objects encapsulate information so that it can be broadcast to other objects by an NSNotificationCenter object.
@@ -128,25 +128,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return keyboardSize.CGRectValue().height
     }
     
-    // Create a UIImage that combines the Image View and the Textfields
-    func generateMemedImage() -> UIImage {
-//        // Hide toolbar and navigation
-//        self.memeToolbar.hidden = true
-        // render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
-        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return memedImage
-    }
-    
-    func save() {
-        //Create the meme
-        var meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage:
-            self.imagePickerView.image, memedImage: generateMemedImage())
-    }
-    
     // Make keyboard disappear when user clicks outside of text field.
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
@@ -157,5 +138,30 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         bottomTextField.resignFirstResponder()
         return true
     }
+    
+    // Create a UIImage that combines the Image View and the Textfields
+    func generateMemedImage() -> UIImage {
+        self.memeToolbar.hidden = true
+        // render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return memedImage
+    }
+    
+    //Write action share method
+    @IBAction func shareWhenTapped(sender: AnyObject) {
+       let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
+      presentViewController(viewController, animated: true, completion: nil)
+    }
+    
+    func save() {
+        //Create the meme
+        var meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+    }
+    
 }
 
