@@ -141,10 +141,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         var meme = Meme( text: topTextField.text!, image:
             imagePickerView.image, memedImage: memedImage())
         
-        // Add it to the memes array in the Application Delegate
         (UIApplication.sharedApplication().delegate as!
-            AppDelegate).memes.append(meme)
-    }
+            AppDelegate).memes.append(meme)    }
 
     private func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
