@@ -74,9 +74,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        imagePickerView.image = image
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.image = image
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 
     func keyboardWillShow(notification: NSNotification){
@@ -118,31 +120,31 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Create a UIImage that combines the Image View and the Textfields
     func generateMemedImage() -> UIImage {
-        hideNavigationItems(true)
         // render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         return memedImage
     }
     
     //Write action share method
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
-      presentViewController(viewController, animated: true, completion: nil)
+       presentViewController(viewController, animated: true, completion: nil)
+       save()
     }
     
     func save() {
-        let memeActivityViewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
-        memeActivityViewController.completionWithItemsHandler = { activity, success, items, error in
-            if success {
-                save(self)
-            }
-        }
-        presentViewController(memeActivityViewController, animated: true, completion: nil)
+        //Create the meme
+        var meme = Meme( text: topTextField.text!, image:
+            imagePickerView.image, memedImage: memedImage())
+        
+        // Add it to the memes array in the Application Delegate
+        (UIApplication.sharedApplication().delegate as!
+            AppDelegate).memes.append(meme)
     }
-
 
     private func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
