@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 
-
 var memes: [Meme]!
 var memedImage: UIImage!
 

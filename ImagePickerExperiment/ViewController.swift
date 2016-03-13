@@ -25,8 +25,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName : -5
     ]
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +32,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // Delegates from UITextField
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
-        // center text
-        topTextField.textAlignment = NSTextAlignment.Center
-        bottomTextField.textAlignment = NSTextAlignment.Center
-        
         // Set the text custom attributes to override the defaults.
         self.topTextField.defaultTextAttributes = memeTextAttributes
         self.bottomTextField.defaultTextAttributes = memeTextAttributes
-
+        // center text, After assigning the defaultTextAttributes
+        topTextField.textAlignment = NSTextAlignment.Center
+        bottomTextField.textAlignment = NSTextAlignment.Center
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,7 +60,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(imagePicker, animated: true, completion: nil)
+        
     }
     
     //Pick an image from an album.
@@ -73,24 +71,25 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
+        
     }
     
-
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        // Set the chosen image.
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imagePickerView.image = image
-        }
-            // Cancel choosing an image.
-            self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        imagePickerView.image = image
     }
 
     func keyboardWillShow(notification: NSNotification){
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y = 0.0
+        if self.bottomTextField.isFirstResponder() {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func keyboardWillHide(notification: NSNotification){
-        view.frame.origin.y += getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder() {
+            view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
 
     // NSNotification objects encapsulate information so that it can be broadcast to other objects by an NSNotificationCenter object.
@@ -117,12 +116,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    // Make keyboard dissapear when user clicks on return button.
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
-        bottomTextField.resignFirstResponder()
-        return true
-    }
-    
     // Create a UIImage that combines the Image View and the Textfields
     func generateMemedImage() -> UIImage {
         hideNavigationItems(true)
@@ -141,11 +134,16 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func save() {
-        //Create the meme
-        var meme = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
-        
+        let memeActivityViewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
+        memeActivityViewController.completionWithItemsHandler = { activity, success, items, error in
+            if success {
+                save(self)
+            }
+        }
+        presentViewController(memeActivityViewController, animated: true, completion: nil)
     }
-    
+
+
     private func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
         navigationController?.setNavigationBarHidden(hide, animated: false)
