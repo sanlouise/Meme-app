@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B612ED8F1C9560A10016701E /* meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612ED8E1C9560A10016701E /* meme.swift */; };
 		B65057191C90860A001EA77D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65057181C90860A001EA77D /* AppDelegate.swift */; };
 		B650571B1C90860A001EA77D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650571A1C90860A001EA77D /* ViewController.swift */; };
 		B650571E1C90860A001EA77D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B650571C1C90860A001EA77D /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B612ED8E1C9560A10016701E /* meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meme.swift; sourceTree = "<group>"; };
 		B65057151C90860A001EA77D /* ImagePickerExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePickerExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B65057181C90860A001EA77D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B650571A1C90860A001EA77D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 		B650570C1C90860A001EA77D = {
 			isa = PBXGroup;
 			children = (
+				B612ED8E1C9560A10016701E /* meme.swift */,
 				B65057171C90860A001EA77D /* ImagePickerExperiment */,
 				B65057161C90860A001EA77D /* Products */,
 			);
@@ -138,6 +141,7 @@
 			files = (
 				B650571B1C90860A001EA77D /* ViewController.swift in Sources */,
 				B65057191C90860A001EA77D /* AppDelegate.swift in Sources */,
+				B612ED8F1C9560A10016701E /* meme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +289,7 @@
 				B65057291C90860A001EA77D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

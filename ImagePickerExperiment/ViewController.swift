@@ -25,19 +25,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName : -5
     ]
+
     
-    var memes: [Meme]!
-    var memedImage: UIImage!
-    
-    //Initialize meme object.
-    struct Meme {
-        var topTextField: String!
-        var bottomTextField: String!
-        var originalImage: UIImage!
-        // Original image and textfields.
-        var memedImage: UIImage!
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
