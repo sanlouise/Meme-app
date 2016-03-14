@@ -17,25 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-gp-YhL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-gp-YhL">
                                 <rect key="frame" x="-4" y="64" width="383" height="559"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top " textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BoS-Ms-ig9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top " textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BoS-Ms-ig9">
                                 <rect key="frame" x="-4" y="103" width="383" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="Grc-5H-hfe"/>
-                                </constraints>
                                 <color key="textColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCK-5U-t1c">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCK-5U-t1c">
                                 <rect key="frame" x="-4" y="548" width="383" height="29"/>
                                 <color key="textColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
                                 <rect key="frame" x="-4" y="623" width="383" height="44"/>
                                 <color key="backgroundColor" red="0.016100121662020683" green="0.0" blue="0.0" alpha="0.0039215688593685627" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
@@ -55,18 +52,6 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="pCK-5U-t1c" firstAttribute="leading" secondItem="89q-Iq-ZFb" secondAttribute="leading" id="9rY-j4-cb4"/>
-                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="top" secondItem="pCK-5U-t1c" secondAttribute="bottom" constant="46" id="Dfa-gK-igw"/>
-                            <constraint firstItem="BoS-Ms-ig9" firstAttribute="leading" secondItem="pCK-5U-t1c" secondAttribute="leading" id="Ftv-bw-pRh"/>
-                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="top" secondItem="CHw-gp-YhL" secondAttribute="bottom" id="MoM-rj-Zsd"/>
-                            <constraint firstItem="CHw-gp-YhL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OWw-DL-bq4"/>
-                            <constraint firstItem="CHw-gp-YhL" firstAttribute="leading" secondItem="BoS-Ms-ig9" secondAttribute="leading" id="dhT-Q7-CLs"/>
-                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="f7i-pm-Z3j"/>
-                            <constraint firstItem="pCK-5U-t1c" firstAttribute="trailing" secondItem="89q-Iq-ZFb" secondAttribute="trailing" id="fej-Uu-aPg"/>
-                            <constraint firstItem="CHw-gp-YhL" firstAttribute="trailing" secondItem="BoS-Ms-ig9" secondAttribute="trailing" id="p45-YS-1U1"/>
-                            <constraint firstItem="pCK-5U-t1c" firstAttribute="trailing" secondItem="BoS-Ms-ig9" secondAttribute="trailing" id="uhd-Q5-ccP"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ClH-Ul-a4Z">
                         <barButtonItem key="leftBarButtonItem" title="Share" id="YdC-8z-hcK">

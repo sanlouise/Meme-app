@@ -26,6 +26,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSStrokeWidthAttributeName : -5
     ]
     
+    struct textFields {
+        var topTextField: String!
+        var bottomTextField: String!
+    }
+    
+    var textField: [textFields]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,22 +140,18 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
        presentViewController(viewController, animated: true, completion: nil)
-       save()
+       
     }
     
     func save() {
         //Create the meme
-        var meme = Meme( text: topTextField.text!, image:
-            imagePickerView.image, memedImage: memedImage())
-        
-        (UIApplication.sharedApplication().delegate as!
-            AppDelegate).memes.append(meme)    }
+        var meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage!)
 
-    private func hideNavigationItems(hide: Bool){
+    func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
         navigationController?.setNavigationBarHidden(hide, animated: false)
 
     }
     
 }
-
+}
