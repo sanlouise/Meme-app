@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,22 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-gp-YhL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-gp-YhL">
                                 <rect key="frame" x="-4" y="64" width="383" height="559"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top " textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BoS-Ms-ig9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top " textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BoS-Ms-ig9">
                                 <rect key="frame" x="-4" y="103" width="383" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="xck-SD-okp"/>
+                                </constraints>
                                 <color key="textColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCK-5U-t1c">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCK-5U-t1c">
                                 <rect key="frame" x="-4" y="548" width="383" height="29"/>
                                 <color key="textColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
                                 <rect key="frame" x="-4" y="623" width="383" height="44"/>
                                 <color key="backgroundColor" red="0.016100121662020683" green="0.0" blue="0.0" alpha="0.0039215688593685627" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
@@ -52,9 +56,24 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CHw-gp-YhL" firstAttribute="leading" secondItem="BoS-Ms-ig9" secondAttribute="leading" id="2yZ-Sp-2S6"/>
+                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="trailing" secondItem="pCK-5U-t1c" secondAttribute="trailing" id="Jos-rK-kAk"/>
+                            <constraint firstItem="BoS-Ms-ig9" firstAttribute="leading" secondItem="pCK-5U-t1c" secondAttribute="leading" id="Lx8-hF-gF6"/>
+                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="leading" secondItem="pCK-5U-t1c" secondAttribute="leading" id="PwH-jV-pI7"/>
+                            <constraint firstItem="pCK-5U-t1c" firstAttribute="trailing" secondItem="BoS-Ms-ig9" secondAttribute="trailing" id="aCe-UO-t08"/>
+                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="top" secondItem="CHw-gp-YhL" secondAttribute="bottom" id="bt3-oS-Y4K"/>
+                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="top" secondItem="pCK-5U-t1c" secondAttribute="bottom" constant="46" id="hfa-j3-HsU"/>
+                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="j3x-gS-nGj"/>
+                            <constraint firstItem="89q-Iq-ZFb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oIk-Np-eIe"/>
+                            <constraint firstItem="pCK-5U-t1c" firstAttribute="trailing" secondItem="CHw-gp-YhL" secondAttribute="trailing" id="u6d-pn-q9k"/>
+                            <constraint firstItem="BoS-Ms-ig9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39" id="utW-xS-D1f"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="89q-Iq-ZFb" secondAttribute="bottom" id="wwV-A6-o7J"/>
+                            <constraint firstItem="CHw-gp-YhL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="z1Z-Du-2Gk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ClH-Ul-a4Z">
-                        <barButtonItem key="leftBarButtonItem" title="Share" id="YdC-8z-hcK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="YdC-8z-hcK">
                             <connections>
                                 <action selector="shareWhenTapped:" destination="BYZ-38-t0r" id="ovr-Dz-HzK"/>
                             </connections>
