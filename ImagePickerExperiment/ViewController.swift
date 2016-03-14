@@ -31,20 +31,19 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         var bottomTextField: String!
     }
     
+    func setTextfieldsAttributes(textField: UITextField) {
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .Center
+    }
+    
     var textField: [textFields]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Delegates from UITextField
-        self.topTextField.delegate = self
-        self.bottomTextField.delegate = self
-        // Set the text custom attributes to override the defaults.
-        self.topTextField.defaultTextAttributes = memeTextAttributes
-        self.bottomTextField.defaultTextAttributes = memeTextAttributes
-        // center text, After assigning the defaultTextAttributes
-        topTextField.textAlignment = NSTextAlignment.Center
-        bottomTextField.textAlignment = NSTextAlignment.Center
+        setTextfieldsAttributes(topTextField)
+        setTextfieldsAttributes(bottomTextField)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,30 +63,22 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
     //Take a new photo.
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        imagePicker.allowsEditing = false
-        presentViewController(imagePicker, animated: true, completion: nil)
+        pickAnImage(.Camera)
         
     }
     
     //Pick an image from an album.
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-//        self.selectSource()
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        presentViewController(imagePicker, animated: true, completion: nil)
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        pickAnImage(.PhotoLibrary)
     }
     
     
-//    func selectSource(picker: UIImagePickerControllerSourceType) {
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        presentViewController(imagePicker, animated: true, completion: nil)
-//        
-//    }
+    func pickAnImage(source: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = source
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -99,13 +90,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification){
         view.frame.origin.y = 0.0
         if self.bottomTextField.isFirstResponder() {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            // Improved slider functionality.
+            view.frame.origin.y = getKeyboardHeight(notification) * -1
         }
     }
     
     func keyboardWillHide(notification: NSNotification){
         if bottomTextField.isFirstResponder() {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
 
@@ -131,6 +123,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     // Make keyboard disappear when user clicks outside of text field.
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    // Make keyboard disappear when user clicks on return.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // Create a UIImage that combines the Image View and the Textfields
