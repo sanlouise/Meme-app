@@ -54,7 +54,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         // If the device has a camera, enable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     }
     
     // Unsubscribe
@@ -68,18 +67,27 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.allowsEditing = false
         presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
     //Pick an image from an album.
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+//        self.selectSource()
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
-        
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
     }
+    
+    
+//    func selectSource(picker: UIImagePickerControllerSourceType) {
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        presentViewController(imagePicker, animated: true, completion: nil)
+//        
+//    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
