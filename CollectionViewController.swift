@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
-var memes: [Meme] {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
-}
+import Foundation
 
 class CollectionViewController: UICollectionViewController {
-
+    
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
+    
 }

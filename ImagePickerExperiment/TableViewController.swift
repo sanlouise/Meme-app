@@ -8,10 +8,12 @@
 
 import UIKit
 
-var memes: [Meme] {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
-}
+
 
 class TableViewController: UITableViewController {
+    
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
 
 }
