@@ -118,22 +118,26 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="lrZ-vB-TdZ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="SOo-57-606" kind="modal" id="ovb-s6-7B1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hq-vC-twU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="766.5" y="745.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="wm3-9v-zG0">
             <objects>
                 <navigationController id="tPy-kS-wiE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Ew8-YO-PtC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hs9-bQ-AqZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="yde-aI-NhQ" kind="relationship" relationship="rootViewController" id="Bt5-bZ-swR"/>
+                        <segue destination="yde-aI-NhQ" kind="relationship" relationship="rootViewController" id="V6P-6P-x4q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joh-NU-vBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,6 +154,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="URg-uz-d6e" kind="relationship" relationship="viewControllers" id="aza-Y6-lGT"/>
+                        <segue destination="tPy-kS-wiE" kind="relationship" relationship="viewControllers" id="w6x-Wr-HNH"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Xk-Ub-lGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,8 +177,8 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YpI-e8-dhE">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FME-LC-DIF">
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -184,11 +192,15 @@
                             <outlet property="delegate" destination="CNP-c7-FWD" id="PDP-Mp-aX5"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="Q5f-YW-Pp0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="SOo-57-606" kind="modal" id="lyW-zC-I7O"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okz-Sa-YEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766.5" y="-35.5"/>
+            <point key="canvasLocation" x="802.5" y="-35.5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="LbJ-2J-LYB">
@@ -203,21 +215,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3R-uS-S1f">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="622"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="modal" id="Ays-1q-ggZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0n-Na-ETT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1366.5" y="-35.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="Yci-j0-Xhj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="URg-uz-d6e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ZiV-Dp-QMp"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AkJ-fp-asK">
@@ -225,10 +241,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CNP-c7-FWD" kind="relationship" relationship="rootViewController" id="D4X-Q0-Pfa"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3v-2n-zh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="226.5" y="-35.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lyW-zC-I7O"/>
+    </inferredMetricsTieBreakers>
 </document>
