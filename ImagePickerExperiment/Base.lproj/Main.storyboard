@@ -126,11 +126,11 @@
             </objects>
             <point key="canvasLocation" x="766.5" y="745.5"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="wm3-9v-zG0">
             <objects>
                 <navigationController id="tPy-kS-wiE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Ew8-YO-PtC"/>
+                    <tabBarItem key="tabBarItem" title="" image="table" id="Ew8-YO-PtC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hs9-bQ-AqZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -229,11 +229,11 @@
             </objects>
             <point key="canvasLocation" x="1366.5" y="-35.5"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="Yci-j0-Xhj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="URg-uz-d6e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZiV-Dp-QMp"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection" id="ZiV-Dp-QMp"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AkJ-fp-asK">
@@ -250,6 +250,10 @@
             <point key="canvasLocation" x="226.5" y="-35.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lyW-zC-I7O"/>
     </inferredMetricsTieBreakers>
