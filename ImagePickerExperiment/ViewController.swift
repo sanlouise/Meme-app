@@ -25,19 +25,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName : -5
     ]
-    
-    struct textFields {
-        var topTextField: String!
-        var bottomTextField: String!
-    }
-    
+
     func setTextfieldsAttributes(textField: UITextField) {
         textField.delegate = self
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .Center
     }
-    
-    var textField: [textFields]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
