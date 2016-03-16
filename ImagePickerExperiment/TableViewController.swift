@@ -15,8 +15,6 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
-        // retrieve the saved memes from our shared model located in AppDelegate
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
@@ -42,7 +40,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let tableController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as UIViewController!
-            tableController.meme = self.memes[indexPath.row]
+            tableController.cell = self.memes[indexPath.row]
             self.navigationController?.pushViewController(tableController, animated: true)
         
     }

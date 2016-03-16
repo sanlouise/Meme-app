@@ -210,8 +210,6 @@
                     <connections>
                         <outlet property="flowLayout" destination="Dv1-9e-C32" id="2wl-IV-0q2"/>
                         <outlet property="memeCollectionView" destination="yur-HA-fTk" id="e2p-55-Hip"/>
-                        <outlet property="memeCollectionViewCell" destination="FME-LC-DIF" id="rZ4-eN-LoE"/>
-                        <outlet property="memeImageView" destination="UeI-DJ-e9e" id="nHr-cG-g4z"/>
                         <segue destination="SOo-57-606" kind="modal" identifier="collectionShowMeme" id="lyW-zC-I7O"/>
                     </connections>
                 </collectionViewController>

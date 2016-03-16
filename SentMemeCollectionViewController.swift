@@ -11,7 +11,7 @@ import Foundation
 
 let reuseIdentifier = "memeCell"
 
-class SentMemeCollectionViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SentMemeCollectionViewController: UICollectionViewController {
     
     var memes: [Meme]!
 
@@ -23,18 +23,22 @@ class SentMemeCollectionViewController: UICollectionViewController, UICollection
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Meme", style: UIBarButtonItemStyle.Plain, target: self, action: "createMeme")
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.hidden = false
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Meme", style: UIBarButtonItemStyle.Plain, target: self, action: "createMeme")
-
-        let space: CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
-        
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        collectionView!.reloadData()
     }
     
     func createMeme() {
@@ -61,28 +65,23 @@ class SentMemeCollectionViewController: UICollectionViewController, UICollection
 //        return cell
 //    }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) as! UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SentMemeCollectionCell", forIndexPath: indexPath) as! MemeCustomCell
         
-        ("memeCell", forIndexPath: indexPath) as! CustomMemeCell
+        // retrieve the corresponding meme
         let meme = memes[indexPath.item]
-        
-        cell.memeImageView.image = meme.image
-//        cell.setText(meme.top, bottomString: meme.bottom)
-        let imageView = UIImageView(image: meme.memedImage)
-        cell.backgroundView = imageView
+        // display the meme(s)
+        cell.memeImageView.image = meme.memedImage
+
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController") as! SentMemeDetailViewController
+        detailController.meme = self.memes [indexPath.item]
+        navigationController!.pushViewController(detailController, animated: true)
         
-        self.performSegueWithIdentifier("collectionShowMeme", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestViewController : SentMemeDetailViewController = segue.destinationViewController as! SentMemeDetailViewController
-        DestViewController.memeDetailVCImage.image = memedImage
-    }
 }
