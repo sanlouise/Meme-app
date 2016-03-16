@@ -14,11 +14,15 @@ import Foundation
 class SentMemesCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    
+    @IBOutlet var memeCollectionView: UICollectionView!
+    @IBOutlet weak var memeImageView: UIImageView!
+    @IBOutlet weak var memeCollectionViewCell: UICollectionViewCell!
     
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: "addTapped")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +46,9 @@ class SentMemesCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCell", forIndexPath: indexPath) as! CustomMemeCell
+        let cell = memeCollectionView.dequeueReusableCellWithReuseIdentifier("customCollectionCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
-        cell.sentMeme!.image = meme.memedImage
+        cell.memeImageView.image = meme.memedImage
         
         return cell
     }
