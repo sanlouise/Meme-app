@@ -65,15 +65,14 @@ class SentMemeCollectionViewController: UICollectionViewController {
 //        return cell
 //    }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) as! UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SentMemeCollectionCell", forIndexPath: indexPath) as! MemeCustomCell
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SentMemeCollectionCell", forIndexPath: indexPath) as! CustomMemeCell
         
-        // retrieve the corresponding meme
+        // retrieve the meme
         let meme = memes[indexPath.item]
-        // display the meme(s)
-        cell.memeImageView.image = meme.memedImage
+        // display the meme
+        cell.memeImageCell.image = meme.memedImage
 
-        
         return cell
     }
     
