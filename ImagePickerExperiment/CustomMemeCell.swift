@@ -10,6 +10,8 @@ import UIKit
 
 class CustomMemeCell: UICollectionViewCell {
     
+    @IBOutlet weak var memeImageCell: UIImageView!
+    
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
         
