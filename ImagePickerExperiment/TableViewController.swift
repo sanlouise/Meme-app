@@ -13,11 +13,18 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     var memes: [Meme]!
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
+        
+//        tableView!.reloadData()
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,21 +38,10 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController")
-//        
-//        cell.imageView? = memedImage
-//        navigationController!.pushViewController(detailViewController, animated: true)
-//    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let tableController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as UIViewController!
-            tableController.cell = self.memes[indexPath.row]
-            self.navigationController?.pushViewController(tableController, animated: true)
-        
-    }
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        let detailController = storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController") as! SentMemeDetailViewController
+        detailController.meme = memes[indexPath.row]
+        navigationController!.pushViewController(detailController, animated: true)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -55,19 +51,15 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-//    // Swiping to the left should delete the list item.
-//    
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            tableView.removeAtIndex(indexPath.row)
-//            //Whenever an item is removed, it should also be deleted in NSUserDefaults
-//            NSUserDefaults.standardUserDefaults().setObject(memes, forKey: "memes")
-//            //Update the table
-//            
-//            tableView.reloadData()
-//        }
-//        
-//    }
+    // Swiping to the left should delete the list item.
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            tableView.removeAtIndex(indexPath.row)
+
+        }
+        
+    }
 
     
     

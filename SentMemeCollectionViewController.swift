@@ -15,7 +15,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     var memes: [Meme]!
 
-    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var memeCollectionView: UICollectionView!
     @IBOutlet weak var memeImageView: UIImageView!
