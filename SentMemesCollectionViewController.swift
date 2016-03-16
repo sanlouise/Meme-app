@@ -61,10 +61,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
         let cell = memeCollectionView.dequeueReusableCellWithReuseIdentifier("memeCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
-        cell.image.image = self.meme[indexPath.row]
-        
-        
-        
+
         return cell
     }
     
@@ -74,18 +71,10 @@ class SentMemesCollectionViewController: UICollectionViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //OR --  var DestViewCntroller : SentMemeDetailViewController = segue.destinationViewController as SentMemeDetailViewController
         
-        if segue.identifier == "collectionShowMeme" {
-            
-            let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
-            let indexPath = indexPaths[0] as NSIndexPath
-            // Now pass data to the next controller
-            let viewcontroller = segue.destinationViewController as! SentMemeDetailViewController
-            Meme.memedImage = Meme.memedImage
-        }
-        
+        var DestViewController : SentMemeDetailViewController = segue.destinationViewController as! SentMemeDetailViewController
+        DestViewController.memeDetailVCImage.image = memedImage
+
     }
-    
     
 }
