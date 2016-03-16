@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EditMemeViewController.swift
 //  ImagePickerExperiment
 //
 //  Created by Sandra Adams-Hallie on Mar/9/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var topTextField: UITextField!
