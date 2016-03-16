@@ -155,6 +155,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         navigationController?.setNavigationBarHidden(hide, animated: false)
 
     }
+        
     
 }
 }

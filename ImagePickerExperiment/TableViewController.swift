@@ -9,42 +9,69 @@
 import UIKit
 import Foundation
 
-class MemeTableViewController: UITableViewController {
+class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var memes: [Meme]!
     
-    override func viewDidAppear(animated: Bool) {
-        tableView!.reloadData()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // retrieve the saved memes from our shared model located in AppDelegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        memes = appDelegate.memes
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeCell")!
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableCell")!
         let meme = memes[indexPath.row]
         cell.imageView?.image = meme.memedImage
-        cell.textLabel?.text = (meme.topTextField + " ... " + meme.bottomTextField)
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController")
-        
-        MemeTableViewController.meme = self.memes[indexPath.row]
-        navigationController!.pushViewController(detailViewController, animated: true)
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController")
+//        
+//        cell.imageView? = memedImage
+//        navigationController!.pushViewController(detailViewController, animated: true)
+//    }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let tableController = self.storyboard?.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as UIViewController!
+            tableController.meme = self.memes[indexPath.row]
+            self.navigationController?.pushViewController(tableController, animated: true)
+        
+    }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
     }
+    
+//    // Swiping to the left should delete the list item.
+//    
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.Delete {
+//            tableView.removeAtIndex(indexPath.row)
+//            //Whenever an item is removed, it should also be deleted in NSUserDefaults
+//            NSUserDefaults.standardUserDefaults().setObject(memes, forKey: "memes")
+//            //Update the table
+//            
+//            tableView.reloadData()
+//        }
+//        
+//    }
+
+    
+    
 
 }
