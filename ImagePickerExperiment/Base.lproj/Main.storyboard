@@ -106,7 +106,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G7w-BU-s7f" id="w0E-TT-KDw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wq-xP-btD">
@@ -171,7 +171,7 @@
         <!--SentMemesCollectionViewController-->
         <scene sceneID="8FG-mx-FMx">
             <objects>
-                <collectionViewController title="SentMemesCollectionViewController" id="CNP-c7-FWD" customClass="SentMemeCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MemeCollectionVC" title="SentMemesCollectionViewController" id="CNP-c7-FWD" customClass="SentMemeCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yur-HA-fTk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,7 +183,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCell" id="FME-LC-DIF" userLabel="customCollectionCell" customClass="CustomMemeCell" customModule="Meme" customModuleProvider="target">
-                                <rect key="frame" x="63" y="64" width="250" height="250"/>
+                                <rect key="frame" x="62.5" y="64" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
@@ -210,6 +210,7 @@
                     <connections>
                         <outlet property="flowLayout" destination="Dv1-9e-C32" id="2wl-IV-0q2"/>
                         <outlet property="memeCollectionView" destination="yur-HA-fTk" id="e2p-55-Hip"/>
+                        <outlet property="memeCollectionViewCell" destination="FME-LC-DIF" id="qTS-Xm-Yi1"/>
                         <segue destination="SOo-57-606" kind="modal" identifier="collectionShowMeme" id="lyW-zC-I7O"/>
                     </connections>
                 </collectionViewController>
@@ -220,7 +221,7 @@
         <!--DetailViewController-->
         <scene sceneID="LbJ-2J-LYB">
             <objects>
-                <viewController title="DetailViewController" id="SOo-57-606" customClass="SentMemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" title="DetailViewController" id="SOo-57-606" customClass="SentMemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nSf-n1-J3G"/>
                         <viewControllerLayoutGuide type="bottom" id="v2K-6x-XlV"/>

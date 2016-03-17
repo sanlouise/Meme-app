@@ -17,8 +17,12 @@ class SentMemeCollectionViewController: UICollectionViewController {
 
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var memeCollectionView: UICollectionView!
-    @IBOutlet weak var memeCollectionViewCell: UICollectionViewCell!
+    
+    @IBOutlet weak var memeCollectionViewCell: CustomMemeCell!
+    
+    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Meme", style: UIBarButtonItemStyle.Plain, target: self, action: "createMeme")
@@ -47,11 +51,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
@@ -59,8 +58,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SentMemeCollectionCell", forIndexPath: indexPath) as! CustomMemeCell
-        
-        // retrieve the meme
+
         let meme = memes[indexPath.item]
         // display the meme
         cell.memeImageCell.image = meme.memedImage
@@ -69,7 +67,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController") as! SentMemeDetailViewController
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemeDetailViewController
         detailController.meme = self.memes [indexPath.item]
         navigationController!.pushViewController(detailController, animated: true)
         
