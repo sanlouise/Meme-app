@@ -53,13 +53,13 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     // Swiping to the left should delete the list item.
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            tableView.removeAtIndex(indexPath.row)
-
-        }
-        
-    }
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.Delete {
+//            tableView.removeAtIndex(indexPath.row)
+//
+//        }
+//        
+//    }
 
     
     
