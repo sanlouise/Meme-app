@@ -15,10 +15,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var memeToolbar: UIToolbar!
-    
-    
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     // Global variables
     var editMeme: Meme?
@@ -140,6 +141,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     // Write action share method.
+    
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
        presentViewController(viewController, animated: true, completion: nil)
@@ -153,6 +155,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         } else {
             return true
         }
+        
     }
     
     // Alert pops up when something is missing from the meme, unable to save.
