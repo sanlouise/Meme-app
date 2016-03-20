@@ -129,7 +129,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return true
     }
     
-    // Create a UIImage that combines the Image View and the Textfields
+    // Create a UIImage that combines the Image View and the Textfields.
     func generateMemedImage() -> UIImage {
         // render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -139,14 +139,23 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return memedImage
     }
     
-    // Write action share method
+    // Write action share method.
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
        presentViewController(viewController, animated: true, completion: nil)
        
     }
     
-    // Alert pops up when something is missing from the meme, unable to save
+    // Test if OK to save.
+    func okToSave() -> Bool {
+        if topTextField.text == nil || bottomTextField.text == nil || imagePickerView.image == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    // Alert pops up when something is missing from the meme, unable to save.
     func alertUser(title: String! = "Title", message: String?, actions: [UIAlertAction]) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
