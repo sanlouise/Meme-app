@@ -28,26 +28,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
-                                <rect key="frame" x="-4" y="623" width="383" height="44"/>
-                                <color key="backgroundColor" red="0.016100121662020683" green="0.0" blue="0.0" alpha="0.0039215688593685627" colorSpace="custom" customColorSpace="sRGB"/>
-                                <items>
-                                    <barButtonItem systemItem="camera" id="FSp-tV-9b8">
-                                        <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="LxI-K6-w6q"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sF2-m7-ZCX"/>
-                                    <barButtonItem title="Album" id="WO9-ZV-ywX">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="tq5-im-5y1"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top " textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BoS-Ms-ig9">
-                                <rect key="frame" x="-4" y="103" width="383" height="31"/>
+                                <rect key="frame" x="-4" y="106" width="383" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="xck-SD-okp"/>
                                 </constraints>
@@ -68,7 +50,11 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem title="Item" systemItem="save" id="ffr-w3-Wad"/>
+                                            <barButtonItem title="Item" systemItem="save" id="ffr-w3-Wad">
+                                                <connections>
+                                                    <action selector="save:" destination="BYZ-38-t0r" id="7yk-bK-hcj"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem title="Clear" id="ZRI-es-zpy" userLabel="Clear Button">
                                                 <connections>
                                                     <action selector="clearWhenTapped:" destination="BYZ-38-t0r" id="uYK-x4-1uc"/>
@@ -78,6 +64,30 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
+                                <rect key="frame" x="-5" y="623" width="383" height="44"/>
+                                <color key="backgroundColor" red="0.016100121662020683" green="0.0" blue="0.0" alpha="0.0039215688593685627" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="FSp-tV-9b8">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="LxI-K6-w6q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GKj-EO-10L"/>
+                                    <barButtonItem systemItem="cancel" id="uJe-XQ-IbD">
+                                        <connections>
+                                            <action selector="cancelButton:" destination="BYZ-38-t0r" id="Oi9-ac-njL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sF2-m7-ZCX"/>
+                                    <barButtonItem title="Album" id="WO9-ZV-ywX">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="tq5-im-5y1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -106,6 +116,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="pCK-5U-t1c" id="WgW-IU-0vh"/>
                         <outlet property="cameraButton" destination="FSp-tV-9b8" id="EuY-mf-GeC"/>
+                        <outlet property="cancelButton" destination="uJe-XQ-IbD" id="eQV-i7-bqz"/>
                         <outlet property="clearButton" destination="ZRI-es-zpy" id="4qf-k7-KLI"/>
                         <outlet property="imagePickerView" destination="CHw-gp-YhL" id="iPA-gr-yvd"/>
                         <outlet property="memeToolbar" destination="89q-Iq-ZFb" id="Qj5-Z9-5aW"/>

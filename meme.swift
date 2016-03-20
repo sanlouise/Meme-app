@@ -66,5 +66,15 @@ struct MemesCollection {
         getStoredMemes().memes.append(meme)
     }
     
+    // Find the index of a specific meme.
+//    static func indexOf(meme: Meme) -> Int {
+//        
+//        // Return first index of meme.
+//        if let index = allMemes.indexOf({$0 == meme}) {
+//            return Int(index)
+//        } else {
+//            return allMemes.count
+//        }
+//    }
 }
 

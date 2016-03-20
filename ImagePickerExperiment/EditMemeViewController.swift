@@ -20,8 +20,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var clearButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     // Global variables
     var editMeme: Meme?
+    var userEdits = false
 
     // Create memeTextAttributes dictionairy.
     let memeTextAttributes = [
@@ -147,6 +150,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     }
     
+    @IBAction func cancelButton(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
+        self.navigationController?.presentViewController(detailController, animated: true,completion:nil)
+    }
+
+    
     // Write action share method.
     
     @IBAction func shareWhenTapped(sender: AnyObject) {
@@ -156,7 +166,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     @IBAction func clearWhenTapped(sender: AnyObject) {
-       
         if MemesCollection.allMemes.count == 0 {
             clearView()
         } else {
@@ -164,8 +173,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
         
     }
-    
-    
+
     // Test if OK to save.
     func okToSave() -> Bool {
         if topTextField.text == nil || bottomTextField.text == nil || imagePickerView.image == nil {
@@ -176,6 +184,24 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     }
     
+    
+//    @IBAction func save(sender: AnyObject) {
+//        
+//        if okToSave() {
+//            let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage!)
+//            if userEdits {
+//                if let editMeme = editMeme {
+//                    MemesCollection.updateMeme(atIndex: MemesCollection.memeIndex(editMeme), withMeme: meme)
+//                }
+//                
+//            }
+//        }
+//        
+//        
+//    }
+    
+    
+    
     // Alert pops up when something is missing from the meme, unable to save.
     func alertUser(title: String! = "Title", message: String?, actions: [UIAlertAction]) {
         
@@ -185,6 +211,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
         presentViewController(alert, animated: true, completion: nil)
     }
+    
+
     
     func save() {
         //Create the meme
@@ -199,8 +227,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         navigationController?.setNavigationBarHidden(hide, animated: false)
 
     }
+    
+    
         
         
     
 }
+
 }

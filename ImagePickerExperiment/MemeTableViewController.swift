@@ -11,19 +11,25 @@ import UIKit
 class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var memes: [Meme]!
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if MemesCollection.countMemes() == 0 {
+            let object: AnyObject = storyboard!.instantiateViewControllerWithIdentifier("EditMemeViewController")
+            let createMemeViewController = object as! EditMemeViewController
+            presentViewController(createMemeViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
 //        tableView!.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        memes = appDelegate.memes
-        
-    }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
