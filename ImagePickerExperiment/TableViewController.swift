@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import Foundation
 
 class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var memes: [Meme]!
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+//        tableView!.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -22,8 +22,6 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
-        
-//        tableView!.reloadData()
         
     }
     
@@ -51,7 +49,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // Swiping to the left should delete the list item.
+//     Swiping to the left should delete the list item.
     
 //    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 //        if editingStyle == UITableViewCellEditingStyle.Delete {

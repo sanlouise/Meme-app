@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CNP-c7-FWD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -9,7 +9,7 @@
         <!--ViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ViewController" id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,9 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-gp-YhL">
-                                <rect key="frame" x="-4" y="64" width="383" height="559"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCK-5U-t1c">
                                 <rect key="frame" x="-4" y="548" width="383" height="29"/>
                                 <color key="textColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,6 +51,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-gp-YhL">
+                                <rect key="frame" x="-4" y="64" width="383" height="559"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -72,21 +72,14 @@
                             <constraint firstItem="CHw-gp-YhL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="z1Z-Du-2Gk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ClH-Ul-a4Z">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="YdC-8z-hcK">
-                            <connections>
-                                <action selector="shareWhenTapped:" destination="BYZ-38-t0r" id="ovr-Dz-HzK"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="SAe-cR-Ip8"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="zr8-3G-X30"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="bottomTextField" destination="pCK-5U-t1c" id="mDJ-ZV-JLz"/>
-                        <outlet property="cameraButton" destination="FSp-tV-9b8" id="4M0-cO-Oic"/>
-                        <outlet property="imagePickerView" destination="CHw-gp-YhL" id="Irc-ko-m5Y"/>
+                        <outlet property="bottomTextField" destination="pCK-5U-t1c" id="WgW-IU-0vh"/>
+                        <outlet property="cameraButton" destination="FSp-tV-9b8" id="EuY-mf-GeC"/>
+                        <outlet property="imagePickerView" destination="CHw-gp-YhL" id="iPA-gr-yvd"/>
                         <outlet property="memeToolbar" destination="89q-Iq-ZFb" id="Qj5-Z9-5aW"/>
-                        <outlet property="topTextField" destination="BoS-Ms-ig9" id="Cye-hi-G8S"/>
+                        <outlet property="topTextField" destination="BoS-Ms-ig9" id="CuZ-tP-tfw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -210,7 +203,6 @@
                     <connections>
                         <outlet property="flowLayout" destination="Dv1-9e-C32" id="2wl-IV-0q2"/>
                         <outlet property="memeCollectionView" destination="yur-HA-fTk" id="e2p-55-Hip"/>
-                        <outlet property="memeCollectionViewCell" destination="FME-LC-DIF" id="qTS-Xm-Yi1"/>
                         <segue destination="SOo-57-606" kind="modal" identifier="collectionShowMeme" id="lyW-zC-I7O"/>
                     </connections>
                 </collectionViewController>
@@ -278,6 +270,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lyW-zC-I7O"/>
+        <segue reference="ovb-s6-7B1"/>
     </inferredMetricsTieBreakers>
 </document>

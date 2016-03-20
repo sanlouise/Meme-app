@@ -17,6 +17,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var memeToolbar: UIToolbar!
+    
+    
+    
+    // Global variables
+    var editMeme: Meme?
 
     // Create memeTextAttributes dictionairy.
     let memeTextAttributes = [
@@ -131,15 +136,24 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return memedImage
     }
     
-    //Write action share method
+    // Write action share method
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
        presentViewController(viewController, animated: true, completion: nil)
        
+    }
+    
+    // Alert pops up when something is missing from the meme, unable to save
+    func alertUser(title: String! = "Title", message: String?, actions: [UIAlertAction]) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        for action in actions {
+            alert.addAction(action)
+        }
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func save() {
@@ -154,6 +168,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         memeToolbar.hidden = hide
         navigationController?.setNavigationBarHidden(hide, animated: false)
 
+    }
+        
+    // Set to default when cancel is pressed.
+    func clearView() {
+        topTextField.text = nil
+        bottomTextField = nil
+        imagePickerView.image = nil
+            
     }
         
     

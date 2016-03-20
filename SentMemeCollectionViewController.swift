@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 let reuseIdentifier = "memeCell"
 
@@ -18,11 +17,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var memeCollectionView: UICollectionView!
     
-    @IBOutlet weak var memeCollectionViewCell: CustomMemeCell!
-    
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Meme", style: UIBarButtonItemStyle.Plain, target: self, action: "createMeme")
@@ -30,7 +24,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
         let dimension = (view.frame.size.width - (2 * space)) / 3.0
         flowLayout.minimumInteritemSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,11 +37,9 @@ class SentMemeCollectionViewController: UICollectionViewController {
     }
     
     func createMeme() {
-        
-        if let navigationController = self.navigationController {
+                if let navigationController = self.navigationController {
             navigationController.popToRootViewControllerAnimated(true)
         }
-        
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemeDetailViewController: UIViewController {
+class SentMemeDetailViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var memeDetailVCImage: UIImageView!
     
@@ -16,9 +16,16 @@ class SentMemeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         memeDetailVCImage.image = memedImage
-
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "memeEditorVC" {
+            
+            let editVC = segue.destinationViewController as! EditMemeViewController
+            editVC.editMeme = meme
+            
+        }
     }
 
 }
