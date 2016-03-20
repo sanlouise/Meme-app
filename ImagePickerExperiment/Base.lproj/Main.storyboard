@@ -270,7 +270,7 @@
         <!--DetailViewController-->
         <scene sceneID="LbJ-2J-LYB">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" title="DetailViewController" id="SOo-57-606" customClass="SentMemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="DetailViewController" id="SOo-57-606" customClass="SentMemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nSf-n1-J3G"/>
                         <viewControllerLayoutGuide type="bottom" id="v2K-6x-XlV"/>
@@ -289,7 +289,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Your Meme" id="Q6J-Ss-Csg">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="AjV-z7-7w4"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="AjV-z7-7w4"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -311,7 +311,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="memeDetailVCImage" destination="5Bc-cw-l6h" id="x5u-Dl-MJG"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" id="Ays-1q-ggZ"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="editMemeSegue" id="Ays-1q-ggZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0n-Na-ETT" userLabel="First Responder" sceneMemberID="firstResponder"/>

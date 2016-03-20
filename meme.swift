@@ -26,7 +26,7 @@ struct Meme {
     }
 }
 
-/*  Convenience methods, inspired by Meme app from RyanCCollins, https://github.com/RyanCCollins/Meme-Me/blob/v.2.0/Meme%20Me/Meme.swift. */
+/*  Convenience methods, inspired by Meme app from RyanCCollins, https://github.com/RyanCCollins/ */
 
 func ==(lhs: Meme, rhs: Meme) -> Bool {
     return lhs.memedImage == rhs.memedImage

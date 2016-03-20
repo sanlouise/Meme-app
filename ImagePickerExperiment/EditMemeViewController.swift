@@ -151,6 +151,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     @IBAction func cancelButton(sender: AnyObject) {
+        
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
         self.navigationController?.presentViewController(detailController, animated: true,completion:nil)
@@ -185,22 +186,38 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     
-//    @IBAction func save(sender: AnyObject) {
-//        
-//        if okToSave() {
-//            let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage!)
-//            if userEdits {
-//                if let editMeme = editMeme {
-//                    MemesCollection.updateMeme(atIndex: MemesCollection.memeIndex(editMeme), withMeme: meme)
-//                }
-//                
-//            }
-//        }
-//        
-//        
-//    }
-    
-    
+    @IBAction func save(sender: AnyObject) {
+        
+        if okToSave() {
+            let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage!)
+            if userEdits {
+                if let editMeme = editMeme {
+                    MemesCollection.updateMeme(atIndex: MemesCollection.indexOf(editMeme), withMeme: meme)
+                }
+                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
+                let editMemeVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
+                self.navigationController?.presentViewController(editMemeVC, animated: true,completion:nil)
+                
+            } else {
+                MemesCollection.addMeme(meme)
+                dismissViewControllerAnimated(true, completion: nil)
+                
+            }
+        } else {
+            
+            let okAction = UIAlertAction(title: "Save", style: .Default, handler: { Void in
+                self.topTextField.text = ""
+                self.bottomTextField.text = ""
+                self.imagePickerView.image = nil
+                return
+            })
+            
+            let editAction = UIAlertAction(title: "Edit", style: .Default, handler: nil)
+            
+            alertUser(message: "Oops, your meme misses something!", actions: [okAction, editAction])
+        }
+
+    }
     
     // Alert pops up when something is missing from the meme, unable to save.
     func alertUser(title: String! = "Title", message: String?, actions: [UIAlertAction]) {

@@ -10,9 +10,6 @@ import UIKit
 
 class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-    @IBOutlet weak var tableImage: UIImageView!
-    @IBOutlet weak var memeTextLabel: UILabel!
     var memes: [Meme]!
     
     override func viewWillAppear(animated: Bool) {
