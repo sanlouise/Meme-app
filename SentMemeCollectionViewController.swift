@@ -8,7 +8,7 @@
 
 import UIKit
 
-let reuseIdentifier = "memeCell"
+let reuseIdentifier = "customCollectionCell"
 
 class SentMemeCollectionViewController: UICollectionViewController {
     
@@ -48,7 +48,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SentMemeCollectionCell", forIndexPath: indexPath) as! CustomMemeCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("customCollectionCell", forIndexPath: indexPath) as! CustomMemeCell
 
         let meme = memes[indexPath.item]
         // display the meme
