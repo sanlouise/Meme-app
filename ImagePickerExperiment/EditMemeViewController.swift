@@ -144,8 +144,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Set to default when clear is pressed.
     func clearView() {
-        topTextField.text = nil
-        bottomTextField.text = nil
+        topTextField.text = ""
+        bottomTextField.text = ""
         imagePickerView.image = nil
         
     }
