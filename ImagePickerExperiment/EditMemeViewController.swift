@@ -16,7 +16,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var memeToolbar: UIToolbar!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var clearButton: UIBarButtonItem!
@@ -150,16 +149,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     }
     
+    // Cancel redirects to table view controller.
     @IBAction func cancelButton(sender: AnyObject) {
-        
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
-        self.navigationController?.presentViewController(detailController, animated: true,completion:nil)
+        let tableViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
+        self.navigationController?.presentViewController(tableViewController, animated: true,completion:nil)
     }
 
-    
     // Write action share method.
-    
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
         viewController.completionWithItemsHandler = { activity, success, items, error in
@@ -188,8 +185,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
         
     }
-    
-    
+
     func save(sender: AnyObject) {
         
         if okToSave() {

@@ -10,6 +10,10 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
     
+    var memes: [Meme] {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+    }
+    
     
     
 }
