@@ -16,11 +16,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var memeToolbar: UIToolbar!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
-    
+    @IBOutlet weak var clearButton: UIBarButtonItem!
     // Global variables
     var editMeme: Meme?
 
@@ -140,6 +139,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return memedImage
     }
     
+    // Set to default when clear is pressed.
+    func clearView() {
+        topTextField.text = nil
+        bottomTextField.text = nil
+        imagePickerView.image = nil
+        
+    }
+    
     // Write action share method.
     
     @IBAction func shareWhenTapped(sender: AnyObject) {
@@ -147,6 +154,17 @@ UINavigationControllerDelegate, UITextFieldDelegate {
        presentViewController(viewController, animated: true, completion: nil)
        
     }
+    
+    @IBAction func clearWhenTapped(sender: AnyObject) {
+       
+        if MemesCollection.allMemes.count == 0 {
+            clearView()
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+    }
+    
     
     // Test if OK to save.
     func okToSave() -> Bool {
@@ -182,13 +200,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
     }
         
-    // Set to default when cancel is pressed.
-    func clearView() {
-        topTextField.text = nil
-        bottomTextField = nil
-        imagePickerView.image = nil
-            
-    }
         
     
 }

@@ -69,7 +69,11 @@
                                         </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem title="Item" systemItem="save" id="ffr-w3-Wad"/>
-                                            <barButtonItem systemItem="cancel" id="ZRI-es-zpy"/>
+                                            <barButtonItem title="Clear" id="ZRI-es-zpy" userLabel="Clear Button">
+                                                <connections>
+                                                    <action selector="clearWhenTapped:" destination="BYZ-38-t0r" id="uYK-x4-1uc"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -102,7 +106,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="pCK-5U-t1c" id="WgW-IU-0vh"/>
                         <outlet property="cameraButton" destination="FSp-tV-9b8" id="EuY-mf-GeC"/>
-                        <outlet property="cancelButton" destination="ZRI-es-zpy" id="Vjp-GR-pfi"/>
+                        <outlet property="clearButton" destination="ZRI-es-zpy" id="4qf-k7-KLI"/>
                         <outlet property="imagePickerView" destination="CHw-gp-YhL" id="iPA-gr-yvd"/>
                         <outlet property="memeToolbar" destination="89q-Iq-ZFb" id="Qj5-Z9-5aW"/>
                         <outlet property="navigationBar" destination="Tdn-zu-nT0" id="t44-Du-MLk"/>
