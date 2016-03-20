@@ -162,8 +162,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func shareWhenTapped(sender: AnyObject) {
        let viewController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
+        viewController.completionWithItemsHandler = { activity, success, items, error in
+            if success {
+                self.save(self)
+            }
+        }
        presentViewController(viewController, animated: true, completion: nil)
-       
     }
     
     @IBAction func clearWhenTapped(sender: AnyObject) {
@@ -186,10 +190,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     
-    @IBAction func save(sender: AnyObject) {
+    func save(sender: AnyObject) {
         
         if okToSave() {
-            let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage!)
+            let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMemedImage())
             if userEdits {
                 if let editMeme = editMeme {
                     MemesCollection.updateMeme(atIndex: MemesCollection.indexOf(editMeme), withMeme: meme)
@@ -228,27 +232,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
         presentViewController(alert, animated: true, completion: nil)
     }
-    
 
-    
-    func save() {
-        //Create the meme
-        var meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage!)
-        // Add it to the memes array in the Application Delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
 
     func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
         navigationController?.setNavigationBarHidden(hide, animated: false)
 
     }
-    
-    
-        
-        
-    
-}
 
 }

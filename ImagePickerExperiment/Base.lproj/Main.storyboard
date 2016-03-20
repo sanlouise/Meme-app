@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yde-aI-NhQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--ViewController-->
@@ -49,23 +48,16 @@
                                                 <action selector="shareWhenTapped:" destination="BYZ-38-t0r" id="g0i-mg-Lva"/>
                                             </connections>
                                         </barButtonItem>
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="Item" systemItem="save" id="ffr-w3-Wad">
-                                                <connections>
-                                                    <action selector="save:" destination="BYZ-38-t0r" id="7yk-bK-hcj"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem title="Clear" id="ZRI-es-zpy" userLabel="Clear Button">
-                                                <connections>
-                                                    <action selector="clearWhenTapped:" destination="BYZ-38-t0r" id="uYK-x4-1uc"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </rightBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="Clear" id="ZRI-es-zpy" userLabel="Clear Button">
+                                            <connections>
+                                                <action selector="clearWhenTapped:" destination="BYZ-38-t0r" id="uYK-x4-1uc"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89q-Iq-ZFb">
-                                <rect key="frame" x="-5" y="623" width="383" height="44"/>
+                                <rect key="frame" x="-1" y="623" width="383" height="44"/>
                                 <color key="backgroundColor" red="0.016100121662020683" green="0.0" blue="0.0" alpha="0.0039215688593685627" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <barButtonItem systemItem="camera" id="FSp-tV-9b8">
@@ -121,7 +113,6 @@
                         <outlet property="imagePickerView" destination="CHw-gp-YhL" id="iPA-gr-yvd"/>
                         <outlet property="memeToolbar" destination="89q-Iq-ZFb" id="Qj5-Z9-5aW"/>
                         <outlet property="navigationBar" destination="Tdn-zu-nT0" id="t44-Du-MLk"/>
-                        <outlet property="saveButton" destination="ffr-w3-Wad" id="3Iu-Iw-gAO"/>
                         <outlet property="shareButton" destination="ROV-4B-tOC" id="Z69-AL-Ck1"/>
                         <outlet property="topTextField" destination="BoS-Ms-ig9" id="CuZ-tP-tfw"/>
                     </connections>
