@@ -26,7 +26,11 @@ struct Meme {
     }
 }
 
-// Convenience methods, inspired by Meme app from RyanCCollins.
+/*  Convenience methods, inspired by Meme app from RyanCCollins, https://github.com/RyanCCollins/Meme-Me/blob/v.2.0/Meme%20Me/Meme.swift. */
+
+func ==(lhs: Meme, rhs: Meme) -> Bool {
+    return lhs.memedImage == rhs.memedImage
+}
 
 struct MemesCollection {
     
@@ -65,16 +69,16 @@ struct MemesCollection {
     static func addMeme(meme: Meme) {
         getStoredMemes().memes.append(meme)
     }
-    
-    // Find the index of a specific meme.
-//    static func indexOf(meme: Meme) -> Int {
-//        
-//        // Return first index of meme.
-//        if let index = allMemes.indexOf({$0 == meme}) {
-//            return Int(index)
-//        } else {
-//            return allMemes.count
-//        }
-//    }
+   
+//     Find the index of a specific meme.
+    static func indexOf(meme: Meme) -> Int {
+        
+        // Return first index of meme.
+        if let index = allMemes.indexOf({$0 == meme}) {
+            return Int(index)
+        } else {
+            return allMemes.count
+        }
+    }
 }
 
