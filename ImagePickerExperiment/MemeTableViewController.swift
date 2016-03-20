@@ -20,13 +20,12 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
             let createMemeViewController = object as! EditMemeViewController
             presentViewController(createMemeViewController, animated: true, completion: nil)
         }
-        
+
     }
-    
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-//        tableView!.reloadData()
+        
     }
     
 
