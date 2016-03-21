@@ -16,7 +16,5 @@ class CustomMemeCell: UICollectionViewCell {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
         
     }
-    
-    
-    
+
 }

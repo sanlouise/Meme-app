@@ -186,8 +186,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
 
     func save(sender: AnyObject) {
-        
-        
         if okToSave() {
             hideNavigationItems(true)
             let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMemedImage())
