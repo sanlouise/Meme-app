@@ -20,13 +20,15 @@ class SentMemeDetailViewController: UIViewController, UINavigationControllerDele
 
         memeDetailVCImage.image = meme.memedImage
     }
+    
 
     @IBAction func editMeme(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
+        let editMemeController = self.storyboard!.instantiateViewControllerWithIdentifier("EditMemeViewController")
+            self.navigationController?.presentViewController(editMemeController, animated: true,completion:nil)
         
-        
-        
-    }
-    
+        }
+
 }
 
 

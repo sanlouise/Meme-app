@@ -104,6 +104,7 @@
                             <constraint firstItem="CHw-gp-YhL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="56" id="z1Z-Du-2Gk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="EtA-9T-dA9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bottomTextField" destination="pCK-5U-t1c" id="WgW-IU-0vh"/>
@@ -134,14 +135,14 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" tableViewCell="G7w-BU-s7f" id="w0E-TT-KDw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wq-xP-btD">
-                                            <rect key="frame" x="0.0" y="0.0" width="92" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="92" height="92.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-uu-jue">
-                                            <rect key="frame" x="107" y="0.0" width="260" height="92"/>
+                                            <rect key="frame" x="107" y="0.0" width="260" height="91.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -293,13 +294,13 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="q67-9h-Y1q"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="UZk-ui-ZTB">
                             <connections>
-                                <action selector="editMeme:" destination="SOo-57-606" id="Cuv-PY-Kha"/>
+                                <action selector="editMeme:" destination="SOo-57-606" id="jzl-3h-ZXM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="editButton" destination="UZk-ui-ZTB" id="V5r-bc-Gtd"/>
+                        <outlet property="editButton" destination="UZk-ui-ZTB" id="CQ3-6q-VOX"/>
                         <outlet property="memeDetailVCImage" destination="5Bc-cw-l6h" id="x5u-Dl-MJG"/>
                         <segue destination="BYZ-38-t0r" kind="modal" identifier="editMemeSegue" id="Ays-1q-ggZ"/>
                     </connections>

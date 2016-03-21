@@ -25,20 +25,24 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     var editMeme: Meme?
     var userEdits = false
 
-    // Create memeTextAttributes dictionairy.
-    
-
-    func setTextfieldsAttributes(textField: UITextField) {
-        textField.delegate = self
-        textField.defaultTextAttributes = memeTextAttributes
-        textField.textAlignment = .Center
+    func setTextFields(textFields: [UITextField!]){
+        for textField in textFields{
+            textField.delegate = self
+            
+            let memeTextAttributes = [
+                NSStrokeColorAttributeName : UIColor.blackColor(),
+                NSForegroundColorAttributeName : UIColor.whiteColor(),
+                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+                NSStrokeWidthAttributeName : -5
+            ]
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.textAlignment = .Center
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setTextfieldsAttributes(topTextField)
-        setTextfieldsAttributes(bottomTextField)
+        setDefaultUI()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -56,27 +60,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
     }
     
-    /* Pass an array of text fields and set the default text attributes for each */
-    func setTextFields(textFields: [UITextField!]){
-        for textField in textFields{
-            textField.delegate = self
-            
-            /* Define default Text Attributes */
-            let memeTextAttributes = [
-                NSStrokeColorAttributeName : UIColor.blackColor(),
-                NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                NSStrokeWidthAttributeName : -5
-            ]
-            textField.defaultTextAttributes = memeTextAttributes
-            textField.textAlignment = .Center
-        }
-    }
-    
-    func setDefaultUIState() {
+    func setDefaultUI() {
         let textFieldArray = [topTextField, bottomTextField]
-        
-        /* Set the meme to edit if there is an editMeme */
         if let editMeme = editMeme {
             navigationBar.topItem?.title = "Edit your Meme"
             
@@ -91,9 +76,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             navigationBar.topItem?.title = "Create a Meme"
             setTextFields(textFieldArray)
         }
-
-        shareButton.enabled = userEdits
-        cancelButton.enabled = userEdits
     }
     
     //Take a new photo.
