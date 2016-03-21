@@ -45,6 +45,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultUI()
+
+            if imagePickerView == nil {
+                shareButton.enabled = false
+            }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -152,11 +156,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Create a UIImage that combines the Image View and the Textfields.
     func generateMemedImage() -> UIImage {
+        hideNavigationItems(true)
         // render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        hideNavigationItems(false)
         return memedImage
     }
     

@@ -14,14 +14,7 @@ class MemeTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         memes = MemesCollection.allMemes
-        
-        if MemesCollection.countMemes() == 0 {
-            let object: AnyObject = storyboard!.instantiateViewControllerWithIdentifier("EditMemeViewController")
-            let createMemeViewController = object as! EditMemeViewController
-            presentViewController(createMemeViewController, animated: true, completion: nil)
-        }
     }
 
     override func viewDidAppear(animated: Bool) {
