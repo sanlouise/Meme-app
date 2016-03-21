@@ -183,12 +183,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         } else {
             return true
         }
-        
     }
 
     func save(sender: AnyObject) {
         
+        
         if okToSave() {
+            hideNavigationItems(true)
             let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMemedImage())
             if userEdits {
                 if let editMeme = editMeme {
@@ -204,23 +205,22 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                 
             }
         } else {
-            
-            let okAction = UIAlertAction(title: "Save", style: .Default, handler: { Void in
+            hideNavigationItems(false)
+            let okAlert = UIAlertAction(title: "Save Eitherway", style: .Default, handler: { Void in
                 self.topTextField.text = ""
                 self.bottomTextField.text = ""
                 self.imagePickerView.image = nil
                 return
             })
             
-            let editAction = UIAlertAction(title: "Edit", style: .Default, handler: nil)
-            
-            alertUser(message: "Oops, your meme misses something!", actions: [okAction, editAction])
+            let editAlert = UIAlertAction(title: "Edit", style: .Default, handler: nil)
+            alertUser(message: "Your meme misses something.", actions: [okAlert, editAlert])
         }
 
     }
     
     // Alert pops up when something is missing from the meme, unable to save.
-    func alertUser(title: String! = "Title", message: String?, actions: [UIAlertAction]) {
+    func alertUser(title: String! = "Oops!", message: String?, actions: [UIAlertAction]) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         for action in actions {
@@ -233,6 +233,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
         navigationController?.setNavigationBarHidden(hide, animated: false)
+        navigationBar.hidden = true
 
     }
 
