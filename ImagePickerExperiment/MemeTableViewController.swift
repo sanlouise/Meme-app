@@ -45,7 +45,6 @@ class MemeTableViewController: UITableViewController {
         let meme = memes[indexPath.row]
         cell.textLabelCell.text = "\(meme.topTextField) \(meme.bottomTextField)"
         cell.tableImage.image = meme.originalImage
-        print("Hello")
         return cell
     }
     

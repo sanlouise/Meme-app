@@ -170,7 +170,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Cancel redirects to table view controller.
     @IBAction func cancelButton(sender: AnyObject) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         let tableViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
         self.navigationController?.presentViewController(tableViewController, animated: true,completion:nil)
     }
