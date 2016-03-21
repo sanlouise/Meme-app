@@ -16,18 +16,11 @@ class SentMemeDetailViewController: UIViewController, UINavigationControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        memeDetailVCImage.image = memedImage
+        
+        
+        memeDetailVCImage.image = meme.memedImage
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "memeEditorVC" {
-            
-            let editVC = segue.destinationViewController as! EditMemeViewController
-            editVC.editMeme = meme
-            
-        }
-    }
-
 }
 
 

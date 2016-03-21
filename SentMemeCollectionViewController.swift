@@ -19,15 +19,16 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Meme", style: UIBarButtonItemStyle.Plain, target: self, action: "createMeme")
-        let space: CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+
+//        let space: CGFloat = 3.0
+//        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+//        flowLayout.minimumInteritemSpacing = space
+//        flowLayout.itemSize = CGSizeMake(dimension, dimension)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         tabBarController?.tabBar.hidden = false
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
@@ -35,17 +36,15 @@ class SentMemeCollectionViewController: UICollectionViewController {
         
         collectionView!.reloadData()
     }
-    
-    func createMeme() {
-                if let navigationController = self.navigationController {
-            navigationController.popToRootViewControllerAnimated(true)
-        }
+    @IBAction func addMeme(sender: AnyObject) {
+        let object: AnyObject = storyboard!.instantiateViewControllerWithIdentifier("EditMemeViewController")
+        let createMemeViewController = object as! EditMemeViewController
+        presentViewController(createMemeViewController, animated: true, completion: nil)
     }
-    
+
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
-    
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("customCollectionCell", forIndexPath: indexPath) as! CustomMemeCell
@@ -58,7 +57,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemesDetailViewController") as! SentMemeDetailViewController
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemeDetailViewController") as! SentMemeDetailViewController
         detailController.meme = self.memes [indexPath.item]
         navigationController!.pushViewController(detailController, animated: true)
         
