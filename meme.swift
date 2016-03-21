@@ -55,11 +55,6 @@ struct MemesCollection {
         return allMemes[index]
     }
     
-    // Delete meme at a specific index.
-    static func deleteMeme(atIndex index: Int) {
-        getStoredMemes().memes.removeAtIndex(index)
-    }
-    
     // Update meme with a new meme at a specific index.
     static func updateMeme(atIndex index: Int, withMeme meme: Meme) {
         getStoredMemes().memes.append(meme)

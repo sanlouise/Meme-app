@@ -134,14 +134,14 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" tableViewCell="G7w-BU-s7f" id="w0E-TT-KDw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wq-xP-btD">
-                                            <rect key="frame" x="0.0" y="0.0" width="92" height="92.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="92" height="93"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-uu-jue">
-                                            <rect key="frame" x="107" y="0.0" width="260" height="91.5"/>
+                                            <rect key="frame" x="107" y="0.0" width="260" height="92"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -248,7 +248,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Your Memes" id="ZCI-bg-rdi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="SdO-ia-IIl"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MDS-b3-U5I">
                             <connections>
                                 <action selector="addMeme:" destination="CNP-c7-FWD" id="kiK-8r-tgM"/>
@@ -278,32 +277,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RnF-S9-sKt">
-                                <rect key="frame" x="0.0" y="35" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="uzi-Dy-QAN"/>
-                                </constraints>
-                            </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="5Bc-cw-l6h" customClass="memeDetailVCImage">
-                                <rect key="frame" x="0.0" y="79" width="375" height="588"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="memeDetailVCImage" translatesAutoresizingMaskIntoConstraints="NO" id="5Bc-cw-l6h" customClass="memeDetailVCImage">
+                                <rect key="frame" x="0.0" y="35" width="375" height="632"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5Bc-cw-l6h" firstAttribute="bottom" secondItem="v2K-6x-XlV" secondAttribute="top" id="61o-bp-29G"/>
-                            <constraint firstItem="RnF-S9-sKt" firstAttribute="trailing" secondItem="5Bc-cw-l6h" secondAttribute="trailing" id="MON-nS-vYU"/>
-                            <constraint firstItem="RnF-S9-sKt" firstAttribute="leading" secondItem="5Bc-cw-l6h" secondAttribute="leading" id="RTt-T1-vt7"/>
                             <constraint firstAttribute="trailing" secondItem="5Bc-cw-l6h" secondAttribute="trailing" id="flm-1m-wui"/>
                             <constraint firstItem="5Bc-cw-l6h" firstAttribute="leading" secondItem="5vf-lS-CaZ" secondAttribute="leading" id="gEI-83-k45"/>
-                            <constraint firstItem="RnF-S9-sKt" firstAttribute="bottom" secondItem="5Bc-cw-l6h" secondAttribute="top" id="jsf-GQ-7LN"/>
-                            <constraint firstItem="5Bc-cw-l6h" firstAttribute="top" secondItem="nSf-n1-J3G" secondAttribute="bottom" constant="30" id="ztq-fG-rlP"/>
+                            <constraint firstItem="5Bc-cw-l6h" firstAttribute="top" secondItem="nSf-n1-J3G" secondAttribute="bottom" constant="15" id="ztq-fG-rlP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meme Detail" id="jI0-Ht-NDz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="UZk-ui-ZTB"/>
+                    <navigationItem key="navigationItem" title="Your Meme" id="jI0-Ht-NDz">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="q67-9h-Y1q"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="UZk-ui-ZTB">
+                            <connections>
+                                <action selector="editMeme:" destination="SOo-57-606" id="Cuv-PY-Kha"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="editButton" destination="UZk-ui-ZTB" id="V5r-bc-Gtd"/>
                         <outlet property="memeDetailVCImage" destination="5Bc-cw-l6h" id="x5u-Dl-MJG"/>
                         <segue destination="BYZ-38-t0r" kind="modal" identifier="editMemeSegue" id="Ays-1q-ggZ"/>
                     </connections>

@@ -10,15 +10,21 @@ import UIKit
 
 class SentMemeDetailViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var memeDetailVCImage: UIImageView!
     
     var meme: Meme!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         memeDetailVCImage.image = meme.memedImage
+    }
+
+    @IBAction func editMeme(sender: AnyObject) {
+        
+        
+        
     }
     
 }
