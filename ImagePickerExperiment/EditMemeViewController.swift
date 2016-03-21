@@ -24,6 +24,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     // Global variables
     var editMeme: Meme?
     var userEdits = false
+    var savedMeme: Meme?
+    var savedIndex: Int? = nil
 
     func setTextFields(textFields: [UITextField!]){
         for textField in textFields{

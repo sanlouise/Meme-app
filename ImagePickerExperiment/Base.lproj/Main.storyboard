@@ -292,17 +292,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Your Meme" id="jI0-Ht-NDz">
                         <barButtonItem key="backBarButtonItem" title="Back" id="q67-9h-Y1q"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="UZk-ui-ZTB">
-                            <connections>
-                                <action selector="editMeme:" destination="SOo-57-606" id="jzl-3h-ZXM"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="editButton" destination="UZk-ui-ZTB" id="CQ3-6q-VOX"/>
                         <outlet property="memeDetailVCImage" destination="5Bc-cw-l6h" id="x5u-Dl-MJG"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="editMemeSegue" id="Ays-1q-ggZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0n-Na-ETT" userLabel="First Responder" sceneMemberID="firstResponder"/>

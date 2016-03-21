@@ -10,24 +10,31 @@ import UIKit
 
 class SentMemeDetailViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var editButton: UIBarButtonItem!
+
     @IBOutlet weak var memeDetailVCImage: UIImageView!
     
     var meme: Meme!
+    var rightButton: UIBarButtonItem!
+    var savedIndex: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        rightButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "editMeme")
+        self.navigationItem.rightBarButtonItem = rightButton
         memeDetailVCImage.image = meme.memedImage
     }
     
 
-    @IBAction func editMeme(sender: AnyObject) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
-        let editMemeController = self.storyboard!.instantiateViewControllerWithIdentifier("EditMemeViewController")
-            self.navigationController?.presentViewController(editMemeController, animated: true,completion:nil)
-        
-        }
+//    func editMeme() {
+//        
+//        let memeEditorController = self.storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
+//        memeEditorController.savedMeme = self.meme
+//        memeEditorController.savedIndex = self.savedIndex
+//        self.navigationController?.pushViewController(EditMemeViewController, animated: true)
+//        EditMemeViewController.editMeme = meme
+//        
+//        
+//    }
 
 }
 

@@ -60,14 +60,6 @@ class MemeTableViewController: UITableViewController {
         navigationController!.pushViewController(detailController, animated: true)
     }
     
-    
-    
-//    //     Swiping to the left should delete the list item.
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-//            MemesCollection.deleteMeme(atIndex: indexPath.item)
-//        }
-//    }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
