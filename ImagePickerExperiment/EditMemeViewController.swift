@@ -44,9 +44,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setDefaultUI()
-
-            if imagePickerView == nil {
+            if imagePickerView.image == nil {
                 shareButton.enabled = false
             }
     }
@@ -87,14 +87,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     //Take a new photo.
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         pickAnImage(.Camera)
-        
     }
     
     //Pick an image from an album.
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         pickAnImage(.PhotoLibrary)
     }
-    
     
     func pickAnImage(source: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
@@ -212,7 +210,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
     func save(sender: AnyObject) {
         if okToSave() {
-            hideNavigationItems(true)
             let meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMemedImage())
             if userEdits {
                 if let editMeme = editMeme {
@@ -228,7 +225,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             }
             
         } else {
-            hideNavigationItems(false)
             let okAlert = UIAlertAction(title: "Save Eitherway", style: .Default, handler: { Void in
                 self.topTextField.text = ""
                 self.bottomTextField.text = ""
@@ -256,7 +252,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         memeToolbar.hidden = hide
         navigationController?.setNavigationBarHidden(hide, animated: false)
         navigationBar.hidden = true
-
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 }
