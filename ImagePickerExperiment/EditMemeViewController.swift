@@ -200,8 +200,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             } else {
                 MemesCollection.addMeme(meme)
                 dismissViewControllerAnimated(true, completion: nil)
-                
             }
+            
         } else {
             hideNavigationItems(false)
             let okAlert = UIAlertAction(title: "Save Eitherway", style: .Default, handler: { Void in
@@ -214,7 +214,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             let editAlert = UIAlertAction(title: "Edit", style: .Default, handler: nil)
             alertUser(message: "Your meme misses something.", actions: [okAlert, editAlert])
         }
-
     }
     
     // Alert pops up when something is missing from the meme, unable to save.

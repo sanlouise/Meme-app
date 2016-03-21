@@ -10,10 +10,7 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
     
-    
-    
-    var memes: [Meme] {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
-    }
+    @IBOutlet weak var tableImage: UIImageView!
+    @IBOutlet weak var textLabelCell: UILabel!
  
 }

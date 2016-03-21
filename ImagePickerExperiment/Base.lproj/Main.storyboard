@@ -9,7 +9,7 @@
         <!--EditMemeViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="EditMemeViewController" id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditMemeViewController" title="EditMemeViewController" id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -124,13 +124,13 @@
         <!--TableViewController-->
         <scene sceneID="sEg-iE-goq">
             <objects>
-                <tableViewController title="TableViewController" id="yde-aI-NhQ" customClass="MemeTableViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MemeTableViewController" title="TableViewController" id="yde-aI-NhQ" customClass="MemeTableViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="kxY-vP-OCB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="memeTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableCell" rowHeight="100" id="G7w-BU-s7f">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="memeTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableCell" rowHeight="100" id="G7w-BU-s7f" customClass="MemeTableViewCell" customModule="Meme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" tableViewCell="G7w-BU-s7f" id="w0E-TT-KDw">
@@ -148,6 +148,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="tableImage" destination="2wq-xP-btD" id="poX-7J-1Og"/>
+                                    <outlet property="textLabelCell" destination="TGW-uu-jue" id="fac-BG-mFf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -214,21 +218,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dv1-9e-C32">
-                            <size key="itemSize" width="151" height="142"/>
+                            <size key="itemSize" width="212" height="212"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCollectionCell" id="FME-LC-DIF" userLabel="customCollectionCell" customClass="CustomMemeCell" customModule="Meme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="151" height="142"/>
+                                <rect key="frame" x="81.5" y="64" width="212" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="151" height="142"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="212" height="212"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UeI-DJ-e9e" userLabel="memeImageView" customClass="imageView">
-                                            <rect key="frame" x="10" y="10" width="131" height="122"/>
+                                            <rect key="frame" x="10" y="10" width="194" height="194"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -261,7 +265,7 @@
         <!--DetailViewController-->
         <scene sceneID="LbJ-2J-LYB">
             <objects>
-                <viewController title="DetailViewController" id="SOo-57-606" customClass="SentMemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SentMemesDetailViewController" title="DetailViewController" id="SOo-57-606" customClass="SentMemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nSf-n1-J3G"/>
                         <viewControllerLayoutGuide type="bottom" id="v2K-6x-XlV"/>

@@ -15,17 +15,17 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        memes = MemesCollection.allMemes
+        
         if MemesCollection.countMemes() == 0 {
             let object: AnyObject = storyboard!.instantiateViewControllerWithIdentifier("EditMemeViewController")
             let createMemeViewController = object as! EditMemeViewController
             presentViewController(createMemeViewController, animated: true, completion: nil)
         }
-
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,15 +38,14 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         let createMemeViewController = object as! EditMemeViewController
         presentViewController(createMemeViewController, animated: true, completion: nil)
     }
-    
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableCell", forIndexPath: indexPath)
+    
+        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableCell", forIndexPath: indexPath) as! MemeTableViewCell
         let meme = memes[indexPath.row]
-        
-        cell.textLabel!.text = "\(meme.topTextField) \(meme.bottomTextField)"
-        cell.imageView!.image = meme.originalImage
-        
+        cell.textLabelCell.text = "\(meme.topTextField) \(meme.bottomTextField)"
+        cell.tableImage.image = meme.originalImage
+        print("Hello")
         return cell
     }
     
@@ -68,8 +67,4 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
             tableView.reloadData()
         }
     }
-
-    
-    
-
 }
