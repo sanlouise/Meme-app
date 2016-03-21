@@ -26,12 +26,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     var userEdits = false
 
     // Create memeTextAttributes dictionairy.
-    let memeTextAttributes = [
-        NSStrokeColorAttributeName : UIColor.blackColor(),
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
-        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -5
-    ]
+    
 
     func setTextfieldsAttributes(textField: UITextField) {
         textField.delegate = self
@@ -60,7 +55,47 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    /* Pass an array of text fields and set the default text attributes for each */
+    func setTextFields(textFields: [UITextField!]){
+        for textField in textFields{
+            textField.delegate = self
+            
+            /* Define default Text Attributes */
+            let memeTextAttributes = [
+                NSStrokeColorAttributeName : UIColor.blackColor(),
+                NSForegroundColorAttributeName : UIColor.whiteColor(),
+                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+                NSStrokeWidthAttributeName : -5
+            ]
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.textAlignment = .Center
+        }
+    }
+    
+    func setDefaultUIState() {
+        let textFieldArray = [topTextField, bottomTextField]
+        
+        /* Set the meme to edit if there is an editMeme */
+        if let editMeme = editMeme {
+            navigationBar.topItem?.title = "Edit your Meme"
+            
+            topTextField.text = editMeme.topTextField
+            bottomTextField.text = editMeme.bottomTextField
+            imagePickerView.image = editMeme.originalImage
+            
+            userEdits = true
+            setTextFields(textFieldArray)
+        } else {
+            //Set the title if creating a Meme */
+            navigationBar.topItem?.title = "Create a Meme"
+            setTextFields(textFieldArray)
+        }
 
+        shareButton.enabled = userEdits
+        cancelButton.enabled = userEdits
+    }
+    
     //Take a new photo.
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         pickAnImage(.Camera)
