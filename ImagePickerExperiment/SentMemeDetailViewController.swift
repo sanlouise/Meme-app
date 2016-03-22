@@ -25,16 +25,13 @@ class SentMemeDetailViewController: UIViewController, UINavigationControllerDele
     }
     
 
-//    func editMeme() {
-//        
-//        let memeEditorController = self.storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
-//        memeEditorController.savedMeme = self.meme
-//        memeEditorController.savedIndex = self.savedIndex
-//        self.navigationController?.pushViewController(EditMemeViewController, animated: true)
-//        EditMemeViewController.editMeme = meme
-//        
-//        
-//    }
+    func editMeme() {
+        
+        let editController = storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
+            editController.editMeme = meme
+            navigationController?.presentViewController(editController, animated: true, completion: nil)
+        
+    }
 
 }
 

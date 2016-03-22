@@ -15,6 +15,7 @@ class MemeTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         memes = MemesCollection.allMemes
+
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -59,5 +60,7 @@ class MemeTableViewController: UITableViewController {
             self.tableView!.reloadData()
         } 
     }
+    
+    
 
 }

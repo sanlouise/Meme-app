@@ -41,23 +41,26 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             textField.textAlignment = .Center
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setDefaultUI()
-            if imagePickerView.image == nil {
-                shareButton.enabled = false
-            }
-    }
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+            shareButton.enabled = true
+            navigationBar.hidden = false
+        
         // The app signs up to be notified when the keyboard is showing.
         self.subscribeToKeyboardNotifications()
         
         // If the device has a camera, enable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setDefaultUI()
+            if self.imagePickerView.image != nil {
+                shareButton.enabled = true
+            }
     }
     
     // Unsubscribe
@@ -68,15 +71,16 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func setDefaultUI() {
         let textFieldArray = [topTextField, bottomTextField]
-        if let editMeme = editMeme {
-            navigationBar.topItem?.title = "Edit your Meme"
             
-            topTextField.text = editMeme.topTextField
-            bottomTextField.text = editMeme.bottomTextField
-            imagePickerView.image = editMeme.originalImage
+            if let meme = editMeme {
+                navigationBar.topItem?.title = "Edit your Meme"
+                imagePickerView.image = meme.originalImage
+                topTextField.text = meme.topTextField
+                bottomTextField.text = meme.bottomTextField
+                shareButton.enabled = true
             
-            userEdits = true
-            setTextFields(textFieldArray)
+                userEdits = true
+                setTextFields(textFieldArray)
         } else {
             //Set the title if creating a Meme */
             navigationBar.topItem?.title = "Create a Meme"
@@ -105,6 +109,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
             self.dismissViewControllerAnimated(true, completion: nil)
+            navigationBar.hidden = false
         }
     }
 
@@ -177,6 +182,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         let tableViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
         self.navigationController?.presentViewController(tableViewController, animated: true,completion:nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     // Write action share method.
@@ -187,6 +193,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                 self.save(self)
             }
         }
+        navigationBar.hidden = false
        presentViewController(viewController, animated: true, completion: nil)
     }
     
@@ -202,6 +209,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     // Test if OK to save.
     func okToSave() -> Bool {
         if topTextField.text == nil || bottomTextField.text == nil || imagePickerView.image == nil {
+            shareButton.enabled = false
             return false
         } else {
             return true
