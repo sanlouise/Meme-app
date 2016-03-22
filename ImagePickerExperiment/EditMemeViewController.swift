@@ -174,7 +174,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topTextField.text = ""
         bottomTextField.text = ""
         imagePickerView.image = nil
-        
     }
     
     // Cancel redirects to table view controller.
@@ -203,7 +202,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         } else {
             dismissViewControllerAnimated(true, completion: nil)
         }
-        
     }
 
     // Test if OK to save.
@@ -223,10 +221,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                 if let editMeme = editMeme {
                     MemesCollection.updateMeme(atIndex: MemesCollection.indexOf(editMeme), withMeme: meme)
                 }
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)//
-                let editMemeVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeTableViewController")
-                self.navigationController?.presentViewController(editMemeVC, animated: true,completion:nil)
-                
+                dismissViewControllerAnimated(true, completion: nil)
             } else {
                 MemesCollection.addMeme(meme)
                 dismissViewControllerAnimated(true, completion: nil)
@@ -245,7 +240,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
     }
     
-    // Alert pops up when something is missing from the meme, unable to save.
     func alertUser(title: String! = "Oops!", message: String?, actions: [UIAlertAction]) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
@@ -265,5 +259,4 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
 }
