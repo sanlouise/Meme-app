@@ -46,6 +46,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
             shareButton.enabled = true
             navigationBar.hidden = false
+            memeToolbar.hidden = false
+        
         
         // The app signs up to be notified when the keyboard is showing.
         self.subscribeToKeyboardNotifications()
@@ -78,7 +80,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                 topTextField.text = meme.topTextField
                 bottomTextField.text = meme.bottomTextField
                 shareButton.enabled = true
-            
                 userEdits = true
                 setTextFields(textFieldArray)
         } else {
@@ -249,10 +250,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         presentViewController(alert, animated: true, completion: nil)
     }
 
-
     func hideNavigationItems(hide: Bool){
         memeToolbar.hidden = hide
-        navigationController?.setNavigationBarHidden(hide, animated: false)
         navigationBar.hidden = true
     }
     
