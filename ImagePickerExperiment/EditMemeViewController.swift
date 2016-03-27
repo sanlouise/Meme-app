@@ -46,13 +46,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
             shareButton.enabled = true
             navigationBar.hidden = false
-            memeToolbar.hidden = false
-        
-        
-        // The app signs up to be notified when the keyboard is showing.
+
         self.subscribeToKeyboardNotifications()
         
-        // If the device has a camera, enable the camera button.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
@@ -65,7 +61,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             }
     }
     
-    // Unsubscribe
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
@@ -83,18 +78,15 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                 userEdits = true
                 setTextFields(textFieldArray)
         } else {
-            //Set the title if creating a Meme */
             navigationBar.topItem?.title = "Create a Meme"
             setTextFields(textFieldArray)
         }
     }
     
-    //Take a new photo.
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         pickAnImage(.Camera)
     }
-    
-    //Pick an image from an album.
+
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         pickAnImage(.PhotoLibrary)
     }
@@ -242,7 +234,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func alertUser(title: String! = "Oops!", message: String?, actions: [UIAlertAction]) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         for action in actions {
             alert.addAction(action)

@@ -10,6 +10,7 @@ import UIKit
 
 class SentMemeDetailViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
+    var userEdits = true
 
     @IBOutlet weak var memeDetailVCImage: UIImageView!
     
@@ -29,6 +30,7 @@ class SentMemeDetailViewController: UIViewController, UINavigationControllerDele
         
         let editController = storyboard?.instantiateViewControllerWithIdentifier("EditMemeViewController") as! EditMemeViewController
             editController.editMeme = meme
+            userEdits = true
             navigationController?.presentViewController(editController, animated: true, completion: nil)
         
     }

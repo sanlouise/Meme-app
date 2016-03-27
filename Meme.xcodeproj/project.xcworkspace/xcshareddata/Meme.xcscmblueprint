@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AA3BB88482D2F43B586B3B3903028EACE73F2F23",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C9FDAC268B9A56CC0FA727AC83CB86BE698D76DF" : 0,
+    "AA3BB88482D2F43B586B3B3903028EACE73F2F23" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BA9D2EF8-08BA-43FF-B573-83A295219427",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C9FDAC268B9A56CC0FA727AC83CB86BE698D76DF" : "..\/..\/Meme-Me",
+    "AA3BB88482D2F43B586B3B3903028EACE73F2F23" : "ImagePickerExperiment\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Meme",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Meme.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sanlouise\/Meme-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AA3BB88482D2F43B586B3B3903028EACE73F2F23"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/RyanCCollins\/Meme-Me.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C9FDAC268B9A56CC0FA727AC83CB86BE698D76DF"
+    }
+  ]
+}
